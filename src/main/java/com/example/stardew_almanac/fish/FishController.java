@@ -10,41 +10,38 @@ import java.util.List;
 @RequestMapping("/fish")
 public class FishController {
 
-  private final FishService fishService;
+    private final FishService fishService;
 
-  @Autowired
-  public FishController(FishService fishService) {
-    this.fishService = fishService;
-  }
-
-  @GetMapping
-  public List<Fish> getFish() {
-    return fishService.getFish();
-  }
-
-  @GetMapping("/{name}")
-  public Fish getFishByName(@PathVariable String name) {
-    return fishService.getFishByName(name);
-  }
-
-  @GetMapping("/{seasons}")
-  //  public List<Fish> getFishBySeasons(@PathVariable String seasons) {
-  public List<Fish> getFishBySeasons(@PathVariable Season season) {
-    //    List<String> seasonList = List.of(seasons.split(","));
-    //    return fishService.getFishBySeason(seasonList);
-    return fishService.getFishBySeason(season);
-  }
-
-  @GetMapping("/{location}")
-  public List<Fish> getFishByLocation(
-      @RequestParam(value = "season", required = false) Season season,
-      //      @RequestParam(value = "season", required = false) String seasons,
-      @PathVariable String location) {
-    if (season != null) {
-      //      List<String> seasonList = List.of(season.split(","));
-      return fishService.getFishByLocations(location, season);
-    } else {
-      return fishService.getFishByLocations(location);
+    @Autowired
+    public FishController(FishService fishService) {
+        this.fishService = fishService;
     }
-  }
+
+    @GetMapping
+    public List<Fish> getFish() {
+        return fishService.getFish();
+    }
+
+    @GetMapping("/{name}")
+    public Fish getFishByName(@PathVariable String name) {
+        return fishService.getFishByName(name);
+    }
+
+    @GetMapping("/{seasons}")
+    public List<Fish> getFishBySeasons(@PathVariable Season season) {
+        return fishService.getFishBySeason(season);
+    }
+
+    @GetMapping("/{location}")
+    public List<Fish> getFishByLocation(
+            @RequestParam(value = "season", required = false) Season season,
+            //      @RequestParam(value = "season", required = false) String seasons,
+            @PathVariable String location) {
+        if (season != null) {
+            //      List<String> seasonList = List.of(season.split(","));
+            return fishService.getFishByLocations(location, season);
+        } else {
+            return fishService.getFishByLocations(location);
+        }
+    }
 }
