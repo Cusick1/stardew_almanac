@@ -4,6 +4,7 @@ import com.example.stardew_almanac.common.Season;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Convert;
 import lombok.Data;
 
 import java.util.List;
@@ -19,8 +20,11 @@ public class Fish {
     private String weather;
     private int xp;
     private int price;
+    @Convert(converter = SeasonListConverter.class)
     private List<Season> seasons;
+    @Convert(converter = StringListConverter.class)
     private List<String> locations;
+    @Convert(converter = StringListConverter.class)
     private List<String> usedIn;
 
     public Fish(
@@ -47,4 +51,3 @@ public class Fish {
     public Fish() {
     }
 }
-
