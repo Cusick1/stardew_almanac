@@ -6,11 +6,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface FishRepository extends JpaRepository<Fish, String> {
 
-    //TODO: Fix queries to use proper JPQL syntax for lists
+    @Query(value = "SELECT f FROM fish WHERE f.name = :name", nativeQuery = true)
+    Fish findByName(String name);
+
     @Query(value = "SELECT f FROM fish WHERE f.seasons LIKE '%:season%'", nativeQuery = true)
     List<Fish> findBySeason(String season);
 
