@@ -25,7 +25,7 @@ public class FishService {
     }
 
     public List<Fish> getFishBySeason(Season season) {
-        return fishRepository.findBySeason(season.toString());
+        return fishRepository.findBySeason(season.name());
     }
 
     public List<Fish> getFishByLocations(String location) {
@@ -33,6 +33,6 @@ public class FishService {
     }
 
     public List<Fish> getFishByLocations(String location, Season season) {
-        return fishRepository.findByLocationAndSeason(location, season);
+        return fishRepository.findByLocationAndSeason(location, season.name());
     }
 }
