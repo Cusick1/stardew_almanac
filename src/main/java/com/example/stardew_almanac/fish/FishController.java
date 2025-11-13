@@ -22,17 +22,17 @@ public class FishController {
         return fishService.getFish();
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     public Fish getFishByName(@PathVariable String name) {
         return fishService.getFishByName(name);
     }
 
-    @GetMapping("/{seasons}")
+    @GetMapping("/season/{season}")
     public List<Fish> getFishBySeasons(@PathVariable Season season) {
         return fishService.getFishBySeason(season);
     }
 
-    @GetMapping("/{location}")
+    @GetMapping("/location/{location}")
     public List<Fish> getFishByLocation(
             @RequestParam(value = "season", required = false) Season season,
             //      @RequestParam(value = "season", required = false) String seasons,
