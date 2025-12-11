@@ -15,12 +15,16 @@ public interface FishRepository extends JpaRepository<Fish, String> {
     @Query(value = "SELECT * FROM fish WHERE name = :name", nativeQuery = true)
     Fish findByName(@Param("name") String name);
 
-    @Query(value = "SELECT * FROM fish WHERE seasons LIKE CONCAT('%', :season, '%')", nativeQuery = true)
-    List<Fish> findBySeason(@Param("season") String season);
+    @Query(value = "SELECT f.* FROM fish f JOIN fish_seasons fs on f.id = fs.fish_id WHERE fs.season_id = :seasonId;", nativeQuery = true)
+    List<Fish> findBySeason(@Param("seasonId") int seasonId);
 
-    @Query(value = "SELECT * FROM fish WHERE locations LIKE CONCAT('%', :location, '%')", nativeQuery = true)
-    List<Fish> findByLocations(@Param("location") String location);
+    @Query(value = "SELECT f.* FROM fish f JOIN fish_locations fl on f.id = fl.fish_id WHERE fl.location_id = :locationId;", nativeQuery = true)
+    List<Fish> findByLocations(@Param("locationId") int locationId);
 
-    @Query(value = "SELECT * FROM fish WHERE locations LIKE CONCAT('%', :location, '%') AND seasons LIKE CONCAT('%', :season, '%')", nativeQuery = true)
-    List<Fish> findByLocationAndSeason(@Param("location") String location, @Param("season") String season);
+    @Query(value = "SELECT f.* FROM fish f " +
+            "JOIN fish_locations fl on f.id = fl.fish_id " +
+            "JOIN fish_seasons fs on f.id = fs.fish_id " +
+            "WHERE fl.location_id = :locationId " +
+            "AND fs.season_id = :seasonId;", nativeQuery = true)
+    List<Fish> findByLocationAndSeason(@Param("locationId") int location, @Param("seasonId") int season);
 }
