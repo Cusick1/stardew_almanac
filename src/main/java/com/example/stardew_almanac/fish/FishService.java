@@ -25,14 +25,14 @@ public class FishService {
     }
 
     public List<Fish> getFishBySeason(Season season) {
-        return fishRepository.findBySeason(season.name());
+        return fishRepository.findBySeason(season.getId());
     }
 
     public List<Fish> getFishByLocations(String location) {
-        return fishRepository.findByLocations(location);
+        return fishRepository.findByLocations(FishLocationMapper.getIdByLocation(location));
     }
 
     public List<Fish> getFishByLocations(String location, Season season) {
-        return fishRepository.findByLocationAndSeason(location, season.name());
+        return fishRepository.findByLocationAndSeason(FishLocationMapper.getIdByLocation(location), season.getId());
     }
 }
