@@ -9,20 +9,20 @@ import java.util.List;
 @RequestMapping("/villagers")
 public class VillagerController {
 
-  private final VillagerService villagerService;
+    private final VillagerService villagerService;
 
-  @Autowired
-  VillagerController(VillagerService villagerService) {
-    this.villagerService = villagerService;
-  }
+    @Autowired
+    VillagerController(VillagerService villagerService) {
+        this.villagerService = villagerService;
+    }
 
-  @GetMapping()
-  public List<Villager> getVillagers() {
-    return villagerService.getVillagers();
-  }
+    @GetMapping()
+    public List<Villager> getVillagers() {
+        return villagerService.getVillagers();
+    }
 
-  @GetMapping("/{name}")
-  public Villager getVillagerByName(@PathVariable String name) {
-    return villagerService.getVillagerByName(name);
-  }
+    @GetMapping("/name/{name}")
+    public Villager getVillagerByName(@PathVariable String name) {
+        return villagerService.getVillagerByName(name);
+    }
 }
