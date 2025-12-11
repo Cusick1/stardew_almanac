@@ -35,10 +35,8 @@ public class FishController {
     @GetMapping("/location/{location}")
     public List<Fish> getFishByLocation(
             @RequestParam(value = "season", required = false) Season season,
-            //      @RequestParam(value = "season", required = false) String seasons,
             @PathVariable String location) {
         if (season != null) {
-            //      List<String> seasonList = List.of(season.split(","));
             return fishService.getFishByLocations(location, season);
         } else {
             return fishService.getFishByLocations(location);
