@@ -1,7 +1,6 @@
 package com.example.stardew_almanac.fish;
 
 import com.example.stardew_almanac.common.Season;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,5 @@
 package com.example.stardew_almanac.villagers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,7 +10,6 @@ public class VillagerController {
 
     private final VillagerService villagerService;
 
-    @Autowired
     VillagerController(VillagerService villagerService) {
         this.villagerService = villagerService;
     }

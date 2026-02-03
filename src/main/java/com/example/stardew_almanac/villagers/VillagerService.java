@@ -8,27 +8,28 @@ import java.util.List;
 
 @Service
 public class VillagerService {
-  @Autowired private VillagerRepository villagerRepository;
+  @Autowired
+  private VillagerRepository villagerRepository;
 
-  //  private List<Villager> villagers;
+  // private List<Villager> villagers;
 
   VillagerService() {
-    //    villagers = new ArrayList<>();
-    //    villagers.add(
-    //        new Villager(
-    //            "Abigail",
-    //            "Fall 13",
-    //            true,
-    //            List.of(
-    //                "Amethyst",
-    //                "Banana Pudding",
-    //                "Blackberry Cobbler",
-    //                "Chocolate Cake",
-    //                "Pufferfish",
-    //                "Pumpkin",
-    //                "Spicy Eel")));
-    //    villagers.add(
-    //        new Villager("Alex", "Summer 13", true, List.of("Complete Breakfast", "Salmon
+    // villagers = new ArrayList<>();
+    // villagers.add(
+    // new Villager(
+    // "Abigail",
+    // "Fall 13",
+    // true,
+    // List.of(
+    // "Amethyst",
+    // "Banana Pudding",
+    // "Blackberry Cobbler",
+    // "Chocolate Cake",
+    // "Pufferfish",
+    // "Pumpkin",
+    // "Spicy Eel")));
+    // villagers.add(
+    // new Villager("Alex", "Summer 13", true, List.of("Complete Breakfast", "Salmon
     // Dinner")));
   }
 
@@ -37,6 +38,7 @@ public class VillagerService {
   }
 
   public Villager getVillagerByName(String name) {
-    return villagerRepository.findById(name).orElse(null);
+    return villagerRepository.findByName(name);
+
   }
 }
