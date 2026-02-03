@@ -1,5 +1,6 @@
 package com.example.stardew_almanac.crops;
 
+import com.example.stardew_almanac.common.Quality;
 import com.example.stardew_almanac.common.Season;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class Crop {
   int growthTime;
   int farmingXP;
   CropType type;
+  Quality quality;
   int energy;
   int health;
   int price;
@@ -25,6 +27,7 @@ public class Crop {
       int growthTime,
       int farmingXP,
       CropType type,
+      Quality quality,
       int energy,
       int health,
       int price,
@@ -35,6 +38,7 @@ public class Crop {
     this.growthTime = growthTime;
     this.farmingXP = farmingXP;
     this.type = type;
+    this.quality = quality;
     this.energy = energy;
     this.health = health;
     this.price = price;
